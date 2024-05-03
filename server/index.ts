@@ -1,4 +1,4 @@
-import { createServer } from "http";
+const { createServer } = require("http")
 
 import {} from "@/common/types/global";
 
