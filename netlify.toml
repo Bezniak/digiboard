@@ -1,7 +1,6 @@
 [build]
-command = "pnpm install && node server/index.ts"
-publish = "dist"
+command = "npm run build"
+publish = "build"
 
 [build.environment]
-NODE_VERSION = "16.9.0"
-NPM_FLAGS = "--store=node_modules/.pnpm-store --shamefully-hoist"
+NODE_VERSION = "14"
