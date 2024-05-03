@@ -1,6 +1,6 @@
-import {atom} from "recoil";
+import { atom } from "recoil";
 
 export const savedMovesAtom = atom<Move[]>({
-    key: "saved_moves",
-    default: [],
+  key: "saved_moves",
+  default: [],
 });

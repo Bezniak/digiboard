@@ -1,40 +1,40 @@
-import {useEffect} from "react";
+import { useEffect } from "react";
 
-import {socket} from "@/common/lib/socket";
-import {useSetUsers} from "@/common/recoil/room";
+import { socket } from "@/common/lib/socket";
+import { useSetUsers } from "@/common/recoil/room";
 
 export const useSocketDraw = (drawing: boolean) => {
-    const {handleAddMoveToUser, handleRemoveMoveFromUser} = useSetUsers();
+  const { handleAddMoveToUser, handleRemoveMoveFromUser } = useSetUsers();
 
-    useEffect(() => {
-        let moveToDrawLater: Move | undefined;
-        let userIdLater = "";
+  useEffect(() => {
+    let moveToDrawLater: Move | undefined;
+    let userIdLater = "";
 
-        socket.on("user_draw", (move, userId) => {
-            if (!drawing) {
-                handleAddMoveToUser(userId, move);
-            } else {
-                moveToDrawLater = move;
-                userIdLater = userId;
-            }
-        });
+    socket.on("user_draw", (move, userId) => {
+      if (!drawing) {
+        handleAddMoveToUser(userId, move);
+      } else {
+        moveToDrawLater = move;
+        userIdLater = userId;
+      }
+    });
 
-        return () => {
-            socket.off("user_draw");
+    return () => {
+      socket.off("user_draw");
 
-            if (moveToDrawLater && userIdLater) {
-                handleAddMoveToUser(userIdLater, moveToDrawLater);
-            }
-        };
-    }, [drawing, handleAddMoveToUser]);
+      if (moveToDrawLater && userIdLater) {
+        handleAddMoveToUser(userIdLater, moveToDrawLater);
+      }
+    };
+  }, [drawing, handleAddMoveToUser]);
 
-    useEffect(() => {
-        socket.on("user_undo", (userId) => {
-            handleRemoveMoveFromUser(userId);
-        });
+  useEffect(() => {
+    socket.on("user_undo", (userId) => {
+      handleRemoveMoveFromUser(userId);
+    });
 
-        return () => {
-            socket.off("user_undo");
-        };
-    }, [handleRemoveMoveFromUser]);
+    return () => {
+      socket.off("user_undo");
+    };
+  }, [handleRemoveMoveFromUser]);
 };
