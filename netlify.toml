@@ -1,6 +1,6 @@
 [build]
 command = "npm run build:server && npm run build:next"
-publish = "out"  # Используйте каталог out
+publish = "/opt/build/repo"
 
 [build.environment]
 NODE_VERSION = "18.17.0"
