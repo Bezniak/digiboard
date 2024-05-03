@@ -37,7 +37,7 @@ const ColorPicker = () => {
             exit="from"
           >
             <h2 className="ml-3 font-semibold text-black dark:text-white">
-              Line color
+              Color
             </h2>
             <RgbaColorPicker
               color={options.lineColor}
@@ -48,18 +48,6 @@ const ColorPicker = () => {
                 });
               }}
               className="mb-5"
-            />
-            <h2 className="ml-3 font-semibold text-black dark:text-white">
-              Fill color
-            </h2>
-            <RgbaColorPicker
-              color={options.fillColor}
-              onChange={(e) => {
-                setOptions({
-                  ...options,
-                  fillColor: e,
-                });
-              }}
             />
           </motion.div>
         )}
