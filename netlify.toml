@@ -1,5 +1,5 @@
 [build]
-command = "npm run build server index.ts"
+command = "npm run build:server && npm run build:next"
 publish = "out"
 
 [build.environment]
