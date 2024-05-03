@@ -3,4 +3,4 @@ command = "npm run build"
 publish = "build"
 
 [build.environment]
-NODE_VERSION = "14"
+NODE_VERSION = "18.17.0"
