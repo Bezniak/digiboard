@@ -1,0 +1,6 @@
+[build]
+command = "npm install && node server/index.ts"
+publish = "dist"
+
+[build.environment]
+NODE_VERSION = "14"
